@@ -7,6 +7,7 @@
 void printer(char buffer[], int len)
 {
 	int i;
+
 	for (i = 0; i < len; i++)
 		_putchar(buffer[i]);
 }
