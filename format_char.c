@@ -1,25 +1,25 @@
 #include "main.h"
 /**
  * format_char - append string argument to the existing buffer.
- * @bu: the first position where the first character of a string is to be appended.
- * @buffer: existing string where a new one is to be appended.
- * @count: amount to be invoked.
- * @arglist: string  to be appended.
+ * @b: a position where the first character of a string is to be appended.
+ * @buf: existing string where a new one is to be appended.
+ * @co: amount to be invoked.
+ * @arg: string  to be appended.
  * Return: length of the appended string.
  */
-int format_char(int *bu, char *buffer, int count, va_list arglist)
+int format_char(int *b, char *buf, int co, va_list arg)
 {
 	int i;
 	int len = 0;
 	char *str;
 
-	for (; count > 1; count--)
-		va_arg(arglist, char *);
-	str = va_arg(arglist, char *);
+	for (; co > 1; co--)
+		va_arg(arg, char *);
+	str = va_arg(arg, char *);
 	for (i = 0; str[i] != '\0'; i++)
 	{
-		buffer[*bu] = str[i];
-		*bu += 1;
+		buf[*b] = str[i];
+		*b += 1;
 		len += 1;
 	}
 	return (len);

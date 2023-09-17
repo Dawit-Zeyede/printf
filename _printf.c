@@ -22,7 +22,7 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			count++;
-			len += format_handler(format, &i, &bu, buffer, count, arglist);
+			len += format_spec(format, &i, &bu, buffer, count, arglist);
 		}
 		else
 		{

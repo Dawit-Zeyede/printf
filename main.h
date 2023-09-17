@@ -5,7 +5,7 @@
 #include <unistd.h>
 int _putchar(char c);
 int _printf(const char *format, ...);
-int format_handler(const char *format, int *i, int *bu, char *buffer, int count, va_list arglist);
-int format_char(int *bu, char *buffer, int count, va_list arglist);
+int format_spec(const char *fo, int *i, int *b, char *buf, int co, va_list arg);
+int format_char(int *b, char *buf, int co, va_list arg);
 void printer(char buffer[], int len);
 #endif
