@@ -21,9 +21,9 @@ long int length_modifier(long int num, int modifier)
  */
 long int un_length_modifier(unsigned long int num, int modifier)
 {
-	if (size == 2)
+	if (modifier == 2)
 		return (num);
-	else if (size == 1)
+	else if (modifier == 1)
 		return ((unsigned short)num);
 	return ((unsigned int)num);
 }
