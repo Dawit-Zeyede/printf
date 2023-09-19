@@ -8,29 +8,28 @@
 int _printf(const char *format, ...)
 {
 	int i;
-	int ret_len = 0;
 	int len = 0;
 	int fla, widt, prec, modif;
-	int p = 0;
-	va_list args;
+	int ret_len = 0;
+	int pos = 0;
 	char buffer[1024];
+	va_list args;
 
 	if (format == NULL)
 		return (-1);
 	va_start(args, format);
-	for (i = 0; format && format[i] != '\0'; i++)
+	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] != '%')
 		{
-			buffer[p] = format[i];
-			p += 1;
-			if (p == 1024)
-				printer(buffer, &p);
+			buffer[pos++] = format[i];
+			if (pos == 1024)
+				printer(buffer, &pos);
 			len += 1;
 		}
 		else
 		{
-			printer(buffer, &p);
+			printer(buffer, &pos);
 			fla = get_flags(format, &i);
 			widt = get_width(format, &i, args);
 			prec = get_precision(format, &i, args);
@@ -42,7 +41,7 @@ int _printf(const char *format, ...)
 			len += ret_len;
 		}
 	}
-	printer(buffer, &p);
+	printer(buffer, &pos);
 	va_end(args);
 	return (len);
 }
