@@ -15,7 +15,7 @@ int handle_print(const char *fmt, int *ind, va_list list, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	int unknow_len = 0, printed_chars = -1;
-	
+
 	switch (fmt[*ind])
 	{
 		case 'c':
@@ -31,7 +31,7 @@ int handle_print(const char *fmt, int *ind, va_list list, char buffer[],
 		case 'b':
 			return (print_binary(list, buffer, flags, width, precision, size));
 		case 'u':
-			return (print_unsigned(list, buffer, flags, width, precision, size));
+			return (print_unsignd(list, buffer, flags, width, precision, size));
 		case 'o':
 			return (print_octal(list, buffer, flags, width, precision, size));
 		case 'x':
