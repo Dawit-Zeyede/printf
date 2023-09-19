@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * print_binary - prints number as base 2.
+ * write_binary - prints number as base 2.
  * @args: list of argument to be invoked.
  * Return: '0' and '1' printed.
  */
