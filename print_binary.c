@@ -1,18 +1,20 @@
 #include "main.h"
-/************************* PRINT BINARY *************************/
 /**
- * print_binary - Prints an unsigned number
- * @types: Lista of arguments
- * Return: Numbers of char printed.
+ * print_binary - prints number as base 2.
+ * @args: list of argument to be invoked.
+ * Return: '0' and '1' printed.
  */
-int print_binary(va_list types)
+int print_binary(va_list args)
 {
-	unsigned int n, m, i, sum;
+	unsigned n;
+	unsigned m;
+	unsigned i;
+	unsigned sum;
 	unsigned int a[32];
 	int count;
 
-	n = va_arg(types, unsigned int);
-	m = 2147483648; /* (2 ^ 31) */
+	n = va_arg(args, unsigned int);
+	m = 2147483648;
 	a[0] = n / m;
 	for (i = 1; i < 32; i++)
 	{

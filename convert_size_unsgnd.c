@@ -8,9 +8,9 @@
  */
 long int convert_size_unsgnd(unsigned long int num, int size)
 {
-	if (size == S_LONG)
+	if (size == 2)
 		return (num);
-	else if (size == S_SHORT)
+	else if (size == 1)
 		return ((unsigned short)num);
 
 	return ((unsigned int)num);

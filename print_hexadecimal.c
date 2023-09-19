@@ -1,18 +1,17 @@
 #include "main.h"
-/************** PRINT UNSIGNED NUMBER IN HEXADECIMAL **************/
 /**
  * print_hexadecimal - Prints an unsigned number in hexadecimal notation
- * @types: Lista of arguments
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
- * @width: get width
- * @precision: Precision specification
- * @size: Size specifier
- * Return: Number of chars printed
+ * @args: list of argument to be passed.
+ * @buffer: string to be filled
+ * @flags:  counted flags.
+ * @width: counted width.
+ * @precision: counted  Precision.
+ * @modifier: counted length modifier.
+ * Return: newly appended characters.
  */
-int print_hexadecimal(va_list types, char buffer[],
-	int flags, int width, int precision, int size)
+int print_hexadecimal(va_list args, char buffer[],
+	int flags, int width, int precision, int modifier)
 {
-	return (print_hexa(types, "0123456789abcdef", buffer,
-		flags, 'x', width, precision, size));
+	return (print_hexa(args, "0123456789abcdef", buffer,
+		flags, 'x', width, precision, modifier));
 }

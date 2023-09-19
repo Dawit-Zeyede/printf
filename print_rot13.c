@@ -21,11 +21,11 @@ int print_rot13string(va_list types, char buffer[],
 	char out[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
 	str = va_arg(types, char *);
-	UNUSED(buffer);
-	UNUSED(flags);
-	UNUSED(width);
-	UNUSED(precision);
-	UNUSED(size);
+	(void) (buffer);
+	(void) (flags);
+	(void) (width);
+	(void) (precision);
+	(void) (size);
 
 	if (str == NULL)
 		str = "(AHYY)";

@@ -1,68 +1,69 @@
 #include "main.h"
 /**
- * handle_print - Prints an argument based on its type
- * @fmt: Formatted string in which to print the arguments.
- * @list: List of arguments to be printed.
- * @ind: ind.
- * @buffer: Buffer array to handle print.
- * @flags: Calculates active flags
- * @width: get width.
- * @precision: Precision specification
- * @size: Size specifier
- * Return: 1 or 2;
- */
-int handle_print(const char *fmt, int *ind, va_list list, char buffer[],
-	int flags, int width, int precision, int size)
+  * format_handler - matchs format specifier with its function.
+  * @format: formatted string.
+  * @i: position of '%'.
+  * @arg: list of arguments according to format specifiers.
+  * @buffer: string which is set to be filled.
+  * @flags: counter for flags.
+  * @width: counter for width.
+  * @precision: counter for precision.
+  * @modifier: counter for length modifier.
+  * Return: number of characters that are newly appended.
+  */
+int format_handler(const char *format, int *i, va_list arg, char buffer[],
+	int flags, int width, int precision, int modifier)
 {
-	int unknow_len = 0, printed_chars = -1;
+	int len = 0;
+	int ret_len = -1;
 
-	switch (fmt[*ind])
+	switch (format[*i])
 	{
 		case 'c':
-			return (print_char(list, buffer, flags, width, precision, size));
+			return (print_char(arg, buffer, flags, width, precision, modifier));
 		case 's':
-			return (print_string(list, flags, width, precision));
+			return (print_string(arg, flags, width, precision));
 		case '%':
 			return (write(1, "%%", 1));
 		case 'i':
-			return (print_int(list, buffer, flags, width, precision, size));
+			return (print_int(arg, buffer, flags, width, precision, modifier));
 		case 'd':
-			return (print_int(list, buffer, flags, width, precision, size));
+			return (print_int(arg, buffer, flags, width, precision, modifier));
 		case 'b':
-			return (print_binary(list));
+			return (print_binary(arg));
 		case 'u':
-			return (print_unsignd(list, buffer, flags, width, precision, size));
+			return (print_unsignd(arg, buffer, flags, width, precision, modifier));
 		case 'o':
-			return (print_octal(list, buffer, flags, width, precision, size));
+			return (print_octal(arg, buffer, flags, width, precision, modifier));
 		case 'x':
-			return (print_hexadecimal(list, buffer, flags, width, precision, size));
+			return (print_hexadecimal(arg, buffer, flags, width, precision, modifier));
 		case 'X':
-			return (print_hexa_upper(list, buffer, flags, width, precision, size));
+			return (print_hexa_upper(arg, buffer, flags, width, precision, modifier));
 		case 'p':
-			return (print_pointer(list, buffer, flags, width, precision, size));
+			return (print_pointer(arg, buffer, flags, width, precision, modifier));
 		case 'S':
-			return (print_non_printable(list, buffer, flags, width, precision, size));
+			return (print_non_printable(arg, buffer, flags, width, precision, modifier));
 		case 'r':
-			return (print_reverse(list, buffer, flags, width, precision, size));
+			return (print_reverse(arg, buffer, flags, width, precision, modifier));
 		case 'R':
-			return (print_rot13string(list, buffer, flags, width, precision, size));
+			return (print_rot13string(arg, buffer, flags, width, precision, modifier));
 		case '\0':
 			return (-1);
 		default:
-			unknow_len += write(1, "%%", 1);
-			if (fmt[*ind - 1] == ' ')
-				unknow_len += write(1, " ", 1);
+			len += write(1, "%%", 1);
+			if (format[*i - 1] == ' ')
+				len += write(1, " ", 1);
 			else if (width)
 			{
-				--(*ind);
-				while (fmt[*ind] != ' ' && fmt[*ind] != '%')
-					--(*ind);
-				if (fmt[*ind] == ' ')
-					--(*ind);
+				--(*i);
+				while (format[*i] != ' ' && format[*i] != '%')
+					--(*i);
+				if (format[*i] == ' ')
+					--(*i);
 				return (1);
 			}
-			unknow_len += write(1, &fmt[*ind], 1);
-			return (unknow_len);
+			len += write(1, &format[*i], 1);
+			return (len);
 		}
-	return (printed_chars);
+	return (ret_len);
 }

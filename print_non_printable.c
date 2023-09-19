@@ -16,10 +16,10 @@ int print_non_printable(va_list types, char buffer[],
 	int i = 0, offset = 0;
 	char *str = va_arg(types, char *);
 
-	UNUSED(flags);
-	UNUSED(width);
-	UNUSED(precision);
-	UNUSED(size);
+        (void) (flags);
+	(void) (width);
+	(void) (precision);
+	(void) (size);
 
 	if (str == NULL)
 		return (write(1, "(null)", 6));

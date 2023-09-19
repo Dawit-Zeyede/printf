@@ -1,21 +1,19 @@
 #include "main.h"
 
-/************************* PRINT CHAR *************************/
-
 /**
- * print_char - Prints a char
- * @types: List a of arguments
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
- * @width: Width
- * @precision: Precision specification
- * @size: Size specifier
- * Return: Number of chars printed
- */
-int print_char(va_list types, char buffer[],
-	int flags, int width, int precision, int size)
+  * print_char - handles sigle character.
+  * @arg: list of argument to be invoked.
+  * @buffer: string to store characters.
+  * @flags: counted flags.
+  * @width: counted width.
+  * @precision: calculated precison.
+  * @modifier: calucated length modifers.
+  * Return: characters appended.
+  */
+int print_char(va_list arg, char buffer[],
+	int flags, int width, int precision, int modifier)
 {
-	char c = va_arg(types, int);
+	char c = va_arg(arg, int);
 
-	return (handle_write_char(c, buffer, flags, width, precision, size));
+	return (handle_write_char(c, buffer, flags, width, precision, modifier));
 }

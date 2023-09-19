@@ -1,58 +1,57 @@
 #include "main.h"
 /**
  * write_unsgnd - Writes an unsigned number
- * @is_negative: Number indicating if the num is negative
- * @ind: Index at which the number starts in the buffer
- * @buffer: Array of chars
- * @flags: Flags specifiers
- * @width: Width specifier
- * @precision: Precision specifier
- * @size: Size specifier
- *
+ * @sign: sign
+ * @i:
+ * @buffer: string to be filled.
+ * @flags: counted flags.
+ * @width: counted width.
+ * @precision: calcualted precision.
+ * @modifier: calcualted size.
  * Return: Number of written chars.
  */
-int write_unsgnd(int is_negative, int ind,
+int write_unsgnd(int sign, int i,
 	char buffer[],
-	int flags, int width, int precision, int size)
+	int flags, int width, int precision, int modifier)
 {
-	/* The number is stored at the bufer's right and starts at position i */
-	int length = BUFF_SIZE - ind - 1, i = 0;
-	char padd = ' ';
+	int len;
+	int j = 0;
+	char space = ' ';
 
-	UNUSED(is_negative);
-	UNUSED(size);
+	(void) (sign);
+	(void) (modifier);
 
-	if (precision == 0 && ind == BUFF_SIZE - 2 && buffer[ind] == '0')
-		return (0); /* printf(".0d", 0)  no char is printed */
+	len = 1023 - i;
+	if (precision == 0 && i == 1022 && buffer[i] == '0')
+		return (0);
+	if (precision > 0 && precision < len)
+		space = ' ';
 
-	if (precision > 0 && precision < length)
-		padd = ' ';
-
-	while (precision > length)
+	while (precision > len)
 	{
-		buffer[--ind] = '0';
-		length++;
+		buffer[--i] = '0';
+		len++;
 	}
 
-	if ((flags & F_ZERO) && !(flags & F_MINUS))
-		padd = '0';
+	if ((flags & 4) && !(flags & 1))
+		space = '0';
 
-	if (width > length)
+	if (width > len)
 	{
-		for (i = 0; i < width - length; i++)
-			buffer[i] = padd;
+		for (j = 0; j < width - len; j++)
+			buffer[j] = space;
 
-		buffer[i] = '\0';
+		buffer[j] = '\0';
 
-		if (flags & F_MINUS) /* Asign extra char to left of buffer [buffer>padd]*/
+		if (flags & 1)
 		{
-			return (write(1, &buffer[ind], length) + write(1, &buffer[0], i));
+			return (write(1, &buffer[i], len) + write(1, &buffer[0], j));
 		}
-		else /* Asign extra char to left of padding [padd>buffer]*/
+		else
 		{
-			return (write(1, &buffer[0], i) + write(1, &buffer[ind], length));
+			return (write(1, &buffer[0], j) + write(1, &buffer[i], len));
 		}
 	}
 
-	return (write(1, &buffer[ind], length));
+	return (write(1, &buffer[i], len));
 }

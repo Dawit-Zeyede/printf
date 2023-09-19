@@ -17,16 +17,16 @@ int print_reverse(va_list types, char buffer[],
 	char *str;
 	int i, count = 0;
 
-	UNUSED(buffer);
-	UNUSED(flags);
-	UNUSED(width);
-	UNUSED(size);
+	(void) (buffer);
+	(void) (flags);
+	(void) (width);
+	(void) (size);
 
 	str = va_arg(types, char *);
 
 	if (str == NULL)
 	{
-		UNUSED(precision);
+		(void) (precision);
 
 		str = ")Null(";
 	}

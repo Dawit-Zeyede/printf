@@ -1,17 +1,17 @@
 #include "main.h"
 /**
- * print_string - Prints a string
- * @types: List a of arguments
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
- * @width: get width.
- * @precision: Precision specification
- * Return: Number of chars printed
+ * print_string - incorporates string with its options and prints it.
+ * @args: list of argument to be invoked.
+ * @flags: counted flags.
+ * @width: counted width.
+ * @precision: counted precision.
+ * Return: length of newly appended.
  */
-int print_string(va_list types, int flags, int width, int precision)
+int print_string(va_list args, int flags, int width, int precision)
 {
-	int length = 0, i;
-	char *str = va_arg(types, char *);
+	int length = 0;
+	int i;
+	char *str = va_arg(args, char *);
 
 	if (str == NULL)
 	{
@@ -19,16 +19,13 @@ int print_string(va_list types, int flags, int width, int precision)
 		if (precision >= 6)
 			str = "      ";
 	}
-
 	while (str[length] != '\0')
 		length++;
-
 	if (precision >= 0 && precision < length)
 		length = precision;
-
 	if (width > length)
 	{
-		if (flags & F_MINUS)
+		if (flags & 1)
 		{
 			write(1, &str[0], length);
 			for (i = width - length; i > 0; i--)
