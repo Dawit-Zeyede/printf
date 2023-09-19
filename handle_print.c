@@ -41,8 +41,6 @@ int format_handler(const char *format, int *i, va_list arg, char buffer[],
 			return (print_hexa_upper(arg, buffer, flags, width, precision, modifier));
 		case 'p':
 			return (print_pointer(arg, buffer, flags, width, precision, modifier));
-		case 'S':
-			return (print_non(arg, buffer, flags, width, precision, modifier));
 		case 'r':
 			return (print_reverse(arg, buffer, flags, width, precision, modifier));
 		case 'R':

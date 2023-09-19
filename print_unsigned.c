@@ -9,8 +9,7 @@
  * @modifier: calcualted length modifier.
  * Return: newly appended characters.
  */
-int print_unsignd(va_list arg, char buffer[],
-	int flags, int width, int precision, int modifier)
+int print_unsignd(va_list arg, char buffer[], int flags, int width, int precision, int modifier)
 {
 	int i = 1022;
 	int sign = 0;
