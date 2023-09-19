@@ -20,7 +20,7 @@ int format_handler(const char *format, int *i, va_list arg, char buffer[],
 	switch (format[*i])
 	{
 		case 'c':
-			return (print_char(arg, buffer, flags, width, precision, modifier));
+			return (handle_write_char(arg, buffer, flags, width, precision, modifier));
 		case 's':
 			return (print_string(arg, flags, width, precision));
 		case '%':
@@ -42,7 +42,7 @@ int format_handler(const char *format, int *i, va_list arg, char buffer[],
 		case 'p':
 			return (print_pointer(arg, buffer, flags, width, precision, modifier));
 		case 'S':
-			return (print_non_printable(arg, buffer, flags, width, precision, modifier));
+			return (print_non(arg, buffer, flags, width, precision, modifier));
 		case 'r':
 			return (print_reverse(arg, buffer, flags, width, precision, modifier));
 		case 'R':

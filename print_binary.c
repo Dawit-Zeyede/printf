@@ -6,10 +6,10 @@
  */
 int print_binary(va_list args)
 {
-	unsigned n;
-	unsigned m;
-	unsigned i;
-	unsigned sum;
+	unsigned int n;
+	unsigned int m;
+	unsigned int i;
+	unsigned int sum;
 	unsigned int a[32];
 	int count;
 

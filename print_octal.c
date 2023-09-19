@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * print_octal - sets number in base 8.
- * @arg: list of argument to be invoked.
+ * @args: list of argument to be invoked.
  * @buffer: string to be incorporated.
  * @flags: counted flags.
  * @width: counted width.

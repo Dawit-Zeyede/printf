@@ -5,7 +5,7 @@
  * @buffer: string to store num and its options.
  * @flags: counted flags.
  * @width: counted width.
- * @precison: calcualted precison.
+ * @precision: calcualted precison.
  * @modifier: calculated length modifier.
  * Return: length of the newly appended strings.
  */

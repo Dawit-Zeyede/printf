@@ -26,14 +26,14 @@ int write_num(int i, char buffer[],
 		space = ' ';
 	while (precision > len)
 	{
-		buffer[--i] = '0'; 
+		buffer[--i] = '0';
 		len++;
 	}
 	if (ch != 0)
 		len++;
 	if (width > len)
 	{
-		for (j= 1; j < width - len + 1; j++)
+		for (j = 1; j < width - len + 1; j++)
 			buffer[j] = space;
 		buffer[j] = '\0';
 		if (flags & 1 && space == ' ')

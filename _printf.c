@@ -10,10 +10,7 @@ int _printf(const char *format, ...)
 	int i;
 	int ret_len = 0;
 	int len = 0;
-	int flags;
-	int width;
-	int precision;
-	int modifier;
+	int fla, widt, prec, modif;
 	int p = 0;
 	va_list args;
 	char buffer[1024];
@@ -34,22 +31,18 @@ int _printf(const char *format, ...)
 		else
 		{
 			printer(buffer, &p);
-			flags = get_flags(format, &i);
-			width = get_width(format, &i, args);
-			precision = get_precision(format, &i, args);
-			modifier = get_size(format, &i);
+			fla = get_flags(format, &i);
+			widt = get_width(format, &i, args);
+			prec = get_precision(format, &i, args);
+			modif = get_size(format, &i);
 			++i;
-			ret_len = format_handler(format, &i, args, buffer,
-				flags, width, precision, modifier);
+			ret_len = format_handler(format, &i, args, buffer, fla, widt, prec, modif);
 			if (ret_len == -1)
 				return (-1);
 			len += ret_len;
 		}
 	}
-
 	printer(buffer, &p);
-
 	va_end(args);
-
 	return (len);
 }

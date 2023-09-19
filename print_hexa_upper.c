@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * print_hexa_upper - sets num to base 16 with upper case notation.
- * @types: list of arguments to be invoked.
+ * @args: list of arguments to be invoked.
  * @buffer: string to be filled
  * @flags: counted flags.
  * @width: counted width.

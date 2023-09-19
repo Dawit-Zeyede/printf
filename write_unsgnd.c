@@ -2,7 +2,7 @@
 /**
  * write_unsgnd - Writes an unsigned number
  * @sign: sign
- * @i:
+ * @i: position
  * @buffer: string to be filled.
  * @flags: counted flags.
  * @width: counted width.

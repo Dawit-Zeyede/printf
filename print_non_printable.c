@@ -1,7 +1,7 @@
 #include "main.h"
 /************************* PRINT NON PRINTABLE *************************/
 /**
- * print_non_printable - Prints ascii codes in hexa of non printable chars
+ * print_non - Prints ascii codes in hexa of non printable chars
  * @types: Lista of arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
@@ -10,17 +10,16 @@
  * @size: Size specifier
  * Return: Number of chars printed
  */
-int print_non_printable(va_list types, char buffer[],
+int print_non(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	int i = 0, offset = 0;
 	char *str = va_arg(types, char *);
 
-        (void) (flags);
+	(void) (flags);
 	(void) (width);
 	(void) (precision);
 	(void) (size);
-
 	if (str == NULL)
 		return (write(1, "(null)", 6));
 

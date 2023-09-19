@@ -15,15 +15,12 @@ int print_unsignd(va_list arg, char buffer[],
 	int i = 1022;
 	int sign = 0;
 	unsigned long int num;
-	
+
 	num = va_arg(arg, unsigned long int);
 	num = convert_size_unsgnd(num, modifier);
-
 	if (num == 0)
 		buffer[i--] = '0';
-
 	buffer[1023] = '\0';
-
 	while (num > 0)
 	{
 		buffer[i--] = (num % 10) + '0';
