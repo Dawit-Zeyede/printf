@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 		else
 		{
 			printer(buffer, &pos);
-			fla = get_flags(format, &i);
+			fla = count_flags(format, &i);
 			widt = get_width(format, &i, args);
 			prec = get_precision(format, &i, args);
 			modif = get_size(format, &i);

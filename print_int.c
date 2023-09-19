@@ -18,7 +18,7 @@ int inc_int(va_list args, char buffer[],
 	unsigned long int num;
 
 	n = va_arg(args, long int);
-	n = convert_size_number(n, modifier);
+	n = length_modifier(n, modifier);
 	if (n == 0)
 		buffer[i--] = '0';
 	buffer[1023] = '\0';

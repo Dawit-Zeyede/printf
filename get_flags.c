@@ -1,34 +1,34 @@
 #include "main.h"
-
 /**
- * get_flags - Calculates active flags
- * @format: Formatted string in which to print the arguments
- * @i: take a parameter.
- * Return: Flags:
+  * count_flags - get the required for the given option.
+  * @format: Formatted string.
+  * @i: postion of '%'.
+  * Return: amount to be printed.
  */
-int get_flags(const char *format, int *i)
+int count_flags(const char *format, int *i)
 {
 	/* - + 0 # ' ' */
 	/* 1 2 4 8  16 */
-	int j, curr_i;
+	int j;
+	int k;
 	int flags = 0;
-	const char FLAGS_CH[] = {'-', '+', '0', '#', ' ', '\0'};
-	const int FLAGS_ARR[] = {1, 2, 4, 8, 16, 0};
+	const char flag_list[] = {'-', '+', '0', '#', ' ', '\0'};
+	const int flag_val[] = {1, 2, 4, 8, 16, 0};
 
-	for (curr_i = *i + 1; format[curr_i] != '\0'; curr_i++)
+	for (k = *i + 1; format[k] != '\0'; k++)
 	{
-		for (j = 0; FLAGS_CH[j] != '\0'; j++)
-			if (format[curr_i] == FLAGS_CH[j])
+		for (j = 0; flag_list[j] != '\0'; j++)
+			if (format[k] == flag_list[j])
 			{
-				flags |= FLAGS_ARR[j];
+				flags |= flag_val[j];
 				break;
 			}
 
-		if (FLAGS_CH[j] == 0)
+		if (flag_list[j] == 0)
 			break;
 	}
 
-	*i = curr_i - 1;
+	*i = k - 1;
 
 	return (flags);
 }

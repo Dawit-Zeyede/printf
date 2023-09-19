@@ -1,12 +1,11 @@
 #include "main.h"
 /**
- * convert_size_unsgnd - Casts a number to the specified size
- * @num: Number to be casted
- * @size: Number indicating the type to be casted
- *
- * Return: Casted value of num
+  * un_length_modifier - modifies and type converts the given num.
+  * @num: num to be modified.
+  * @modifier: prefferd modifier.
+  * Return: length of the full num.
  */
-long int convert_size_unsgnd(unsigned long int num, int size)
+long int un_length_modifier(unsigned long int num, int size)
 {
 	if (size == 2)
 		return (num);

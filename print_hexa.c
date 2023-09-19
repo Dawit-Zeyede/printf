@@ -19,7 +19,7 @@ int inc_hexa(va_list args, char hex_val[], char buffer[],
 	unsigned long int init_num;
 
 	num = init_num = va_arg(args, unsigned long int);
-	num = convert_size_unsgnd(num, modifier);
+	num = un_length_modifier(num, modifier);
 
 	if (num == 0)
 		buffer[i--] = '0';

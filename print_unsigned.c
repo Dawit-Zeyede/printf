@@ -16,7 +16,7 @@ int inc_unsignd(va_list arg, char buffer[], int flags, int width, int precision,
 	unsigned long int num;
 
 	num = va_arg(arg, unsigned long int);
-	num = convert_size_unsgnd(num, modifier);
+	num = un_length_modifier(num, modifier);
 	if (num == 0)
 		buffer[i--] = '0';
 	buffer[1023] = '\0';

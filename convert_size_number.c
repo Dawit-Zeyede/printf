@@ -1,17 +1,15 @@
 #include "main.h"
-
 /**
- * convert_size_number - Casts a number to the specified size
- * @num: Number to be casted.
- * @size: Number indicating the type to be casted.
- *
- * Return: Casted value of num
- */
-long int convert_size_number(long int num, int size)
+  * length_modifier - long and short format.
+  * @num: numeber to be modified.
+  * @size: prefered format.
+  * Return: length.
+  */
+long int length_modifier(long int num, int modifier)
 {
-	if (size == 2)
+	if (modifier == 2)
 		return (num);
-	else if (size == 1)
+	else if (modifier == 1)
 		return ((short)num);
 
 	return ((int)num);
