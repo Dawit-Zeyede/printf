@@ -23,7 +23,7 @@ int handle_print(const char *fmt, int *ind, va_list list, char buffer[],
 		case 's':
 			return (print_string(list, buffer, flags, width, precision, size));
 		case '%':
-			return (print_percent(list, buffer, flags, width, precision, size));
+			return (write(1, "%%", 1));
 		case 'i':
 			return (print_int(list, buffer, flags, width, precision, size));
 		case 'd':
