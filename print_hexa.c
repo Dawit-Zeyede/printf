@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * print_hexa - sets num in base 16.
+ * inc_hexa - sets num in base 16.
  * @args: list of argument to be invoked.
  * @hex_val: 16 hex val to be mapped with the num.
  * @buffer: string to be filled.
@@ -11,7 +11,7 @@
  * @modifier: counted modifiers.
  * Return: newly added characters.
  */
-int print_hexa(va_list args, char hex_val[], char buffer[],
+int inc_hexa(va_list args, char hex_val[], char buffer[],
 	int flags, char flag_ch, int width, int precision, int modifier)
 {
 	int i = 1022;

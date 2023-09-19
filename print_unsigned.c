@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * print_unsigned - type conversion and print it out.
+ * inc_unsigned - type conversion and incorporates all of its options.
  * @arg: list of argument to be invoked.
  * @buffer: string to store.
  * @flags: counted flags.
@@ -9,7 +9,7 @@
  * @modifier: calcualted length modifier.
  * Return: newly appended characters.
  */
-int print_unsignd(va_list arg, char buffer[], int flags, int width, int precision, int modifier)
+int inc_unsignd(va_list arg, char buffer[], int flags, int width, int precision, int modifier)
 {
 	int i = 1022;
 	int sign = 0;

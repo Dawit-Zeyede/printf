@@ -1,8 +1,8 @@
 #include "main.h"
 /**
-  * printer: printes the string with in a buffer.
+  * printer - printes the string with in a buffer.
   * @buffer: string to be printed.
-  * @i: position of the last character in a string.
+  * @p: position of the last character in a string.
   */
 void printer(char buffer[], int *p)
 {

@@ -1,13 +1,13 @@
 #include "main.h"
 /**
- * print_string - incorporates string with its options and prints it.
+ * write_string - incorporates string with its options and prints it.
  * @args: list of argument to be invoked.
  * @flags: counted flags.
  * @width: counted width.
  * @precision: counted precision.
  * Return: length of newly appended.
  */
-int print_string(va_list args, int flags, int width, int precision)
+int write_string(va_list args, int flags, int width, int precision)
 {
 	int length = 0;
 	int i;

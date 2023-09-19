@@ -16,29 +16,31 @@ int format_handler(const char *format, int *i, va_list arg, char buffer[],
 {
 	int len = 0;
 	int ret_len = -1;
+	char upper[] = "0123456789ABCDE";
+	char lower[] = "0123456789abcde";
 
 	switch (format[*i])
 	{
 		case 'c':
 			return (handle_write_char(arg, buffer, flags, width));
 		case 's':
-			return (print_string(arg, flags, width, precision));
+			return (write_string(arg, flags, width, precision));
 		case '%':
 			return (write(1, "%%", 1));
 		case 'i':
-			return (print_int(arg, buffer, flags, width, precision, modifier));
+			return (inc_int(arg, buffer, flags, width, precision, modifier));
 		case 'd':
-			return (print_int(arg, buffer, flags, width, precision, modifier));
+			return (inc_int(arg, buffer, flags, width, precision, modifier));
 		case 'b':
-			return (print_binary(arg));
+			return (write_binary(arg));
 		case 'u':
-			return (print_unsignd(arg, buffer, flags, width, precision, modifier));
+			return (inc_unsignd(arg, buffer, flags, width, precision, modifier));
 		case 'o':
-			return (print_octal(arg, buffer, flags, width, precision, modifier));
+			return (inc_octal(arg, buffer, flags, width, precision, modifier));
 		case 'x':
-			return (print_hexadecimal(arg, buffer, flags, width, precision, modifier));
+			return (inc_hexa(arg, lower, buffer, flags, 'x', width, precision, modifier));
 		case 'X':
-			return (print_hexa_upper(arg, buffer, flags, width, precision, modifier));
+			return (inc_hexa(arg, upper, buffer, flags, 'X', width, precision, modifier));
 		case 'r':
 			return (print_reverse(arg, buffer, flags, width, precision, modifier));
 		case 'R':
@@ -52,7 +54,7 @@ int format_handler(const char *format, int *i, va_list arg, char buffer[],
 			else if (width)
 			{
 				--(*i);
-				while (format[*i] != ' ' && format[*i] != '%')
+				while ((format[*i] != ' ') && (format[*i] != '%'))
 					--(*i);
 				if (format[*i] == ' ')
 					--(*i);

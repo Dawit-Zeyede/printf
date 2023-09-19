@@ -4,7 +4,7 @@
  * @args: list of argument to be invoked.
  * Return: '0' and '1' printed.
  */
-int print_binary(va_list args)
+int write_binary(va_list args)
 {
 	unsigned int n;
 	unsigned int m;
