@@ -9,7 +9,7 @@
   * @modifier: counted modifier.
   * Return: newly appended characters.
   */
-int write_reverse(va_list args, int precision)
+int write_reverse(va_list args)
 {
 	char *str;
 	int i, count = 0;
@@ -17,7 +17,6 @@ int write_reverse(va_list args, int precision)
 	str = va_arg(args, char *);
 	if (str == NULL)
 	{
-		(void) (precision);
 		str = ")Null(";
 	}
 	for (i = 0; str[i]; i++)
