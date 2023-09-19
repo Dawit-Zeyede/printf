@@ -16,8 +16,8 @@ int format_handler(const char *format, int *i, va_list arg, char buffer[],
 {
 	int len = 0;
 	int ret_len = -1;
-	char upper[] = "0123456789ABCDE";
-	char lower[] = "0123456789abcde";
+	char upper[] = "0123456789ABCDEF";
+	char lower[] = "0123456789abcdef";
 
 	switch (format[*i])
 	{
