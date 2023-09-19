@@ -42,7 +42,7 @@ int format_handler(const char *format, int *i, va_list arg, char buffer[],
 		case 'X':
 			return (inc_hexa(arg, upper, buffer, flags, 'X', width, precision, modifier));
 		case 'r':
-			return (print_reverse(arg, buffer, flags, width, precision, modifier));
+			return (write_reverse(arg, precision));
 		case 'R':
 			return (print_rot13string(arg, buffer, flags, width, precision, modifier));
 		case '\0':

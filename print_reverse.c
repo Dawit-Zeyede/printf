@@ -1,38 +1,27 @@
 #include "main.h"
-/************************* PRINT REVERSE *************************/
 /**
- * print_reverse - Prints reverse string.
- * @types: Lista of arguments
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
- * @width: get width
- * @precision: Precision specification
- * @size: Size specifier
- * Return: Numbers of chars printed
- */
-
-int print_reverse(va_list types, char buffer[],
-	int flags, int width, int precision, int size)
+  * write_reverse - print a stiring in a reverse.
+  * @args: List of argument to be invoked.
+  * @buffer: string to be filled.
+  * @flags: counted flags.
+  * @width: counted width.
+  * @precision: counted precision.
+  * @modifier: counted modifier.
+  * Return: newly appended characters.
+  */
+int write_reverse(va_list args, int precision)
 {
 	char *str;
 	int i, count = 0;
 
-	(void) (buffer);
-	(void) (flags);
-	(void) (width);
-	(void) (size);
-
-	str = va_arg(types, char *);
-
+	str = va_arg(args, char *);
 	if (str == NULL)
 	{
 		(void) (precision);
-
 		str = ")Null(";
 	}
 	for (i = 0; str[i]; i++)
 		;
-
 	for (i = i - 1; i >= 0; i--)
 	{
 		char z = str[i];
