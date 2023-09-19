@@ -1,36 +1,32 @@
 #include "main.h"
-
 /**
- * get_width - Calculates the width for printing
- * @format: Formatted string in which to print the arguments.
- * @i: List of arguments to be printed.
- * @list: list of arguments.
- *
- * Return: width.
+  * count_width - get the amount of spaces used.
+  * @format: formatted printer.
+  * @i: position of '%' or 'flag'.
+  * @arg: list of arguments to be invoked.
+  * Return: speces to be printed.
  */
-int get_width(const char *format, int *i, va_list list)
+int count_width(const char *format, int *i, va_list arg)
 {
-	int curr_i;
+	int k;
 	int width = 0;
 
-	for (curr_i = *i + 1; format[curr_i] != '\0'; curr_i++)
+	for (k = *i + 1; format[k] != '\0'; k++)
 	{
-		if (is_digit(format[curr_i]))
+		if (is_digit(format[k]))
 		{
 			width *= 10;
-			width += format[curr_i] - '0';
+			width += format[k] - '0';
 		}
-		else if (format[curr_i] == '*')
+		else if (format[k] == '*')
 		{
-			curr_i++;
-			width = va_arg(list, int);
+			k++;
+			width = va_arg(arg, int);
 			break;
 		}
 		else
 			break;
 	}
-
-	*i = curr_i - 1;
-
+	*i = k - 1;
 	return (width);
 }

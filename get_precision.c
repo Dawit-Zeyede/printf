@@ -1,41 +1,35 @@
 #include "main.h"
-
 /**
- * get_precision - Calculates the precision for printing
- * @format: Formatted string in which to print the arguments
- * @i: List of arguments to be printed.
- * @list: list of arguments.
- *
- * Return: Precision.
+  * count_precision - calcualtes precision.
+  * @format: formatted string.
+  * @i: position of '%' or 'flags' or 'width'.
+  * @arg: list of argument to be invoked.
+  * Return: Decimal point.
  */
-int get_precision(const char *format, int *i, va_list list)
+int count_precision(const char *format, int *i, va_list arg)
 {
-	int curr_i = *i + 1;
+	int k = *i + 1;
 	int precision = -1;
 
-	if (format[curr_i] != '.')
+	if (format[k] != '.')
 		return (precision);
-
 	precision = 0;
-
-	for (curr_i += 1; format[curr_i] != '\0'; curr_i++)
+	for (k += 1; format[k] != '\0'; k++)
 	{
-		if (is_digit(format[curr_i]))
+		if (is_digit(format[k]))
 		{
 			precision *= 10;
-			precision += format[curr_i] - '0';
+			precision += format[k] - '0';
 		}
-		else if (format[curr_i] == '*')
+		else if (format[k] == '*')
 		{
-			curr_i++;
-			precision = va_arg(list, int);
+			k++;
+			precision = va_arg(arg, int);
 			break;
 		}
 		else
 			break;
 	}
-
-	*i = curr_i - 1;
-
+	*i = k - 1;
 	return (precision);
 }

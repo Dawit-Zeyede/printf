@@ -16,9 +16,9 @@ int print_hexadecimal(va_list args, char buffer[], int flags, int width, int pre
 int print_hexa_upper(va_list args, char buffer[], int flags, int width, int precision, int modifier);
 int inc_hexa(va_list args, char map[], char buffer[], int flags, char flag_ch, int width, int precision, int modifier);
 int count_flags(const char *format, int *i);
-int get_width(const char *format, int *i, va_list args);
-int get_precision(const char *format, int *i, va_list args);
-int get_size(const char *format, int *i);
+int count_width(const char *format, int *i, va_list args);
+int count_precision(const char *format, int *i, va_list args);
+int count_len(const char *format, int *i);
 int write_reverse(va_list args);
 int write_rot13_encry(va_list args);
 int handle_write_char(va_list args, char buffer[], int flags, int width);

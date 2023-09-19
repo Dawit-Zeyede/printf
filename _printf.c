@@ -32,9 +32,9 @@ int _printf(const char *format, ...)
 		{
 			printer(buffer, &pos);
 			fla = count_flags(format, &i);
-			widt = get_width(format, &i, args);
-			prec = get_precision(format, &i, args);
-			modif = get_size(format, &i);
+			widt = count_width(format, &i, args);
+			prec = count_precision(format, &i, args);
+			modif = count_len(format, &i);
 			i += 1;
 			ret_len = format_handler(format, &i, args, buffer, fla, widt, prec, modif);
 			if (ret_len == -1)
