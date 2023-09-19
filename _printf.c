@@ -22,7 +22,8 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] != '%')
 		{
-			buffer[pos++] = format[i];
+			buffer[pos] = format[i];
+			pos += 1;
 			if (pos == 1024)
 				printer(buffer, &pos);
 			len += 1;
@@ -34,7 +35,7 @@ int _printf(const char *format, ...)
 			widt = get_width(format, &i, args);
 			prec = get_precision(format, &i, args);
 			modif = get_size(format, &i);
-			++i;
+			i += 1;
 			ret_len = format_handler(format, &i, args, buffer, fla, widt, prec, modif);
 			if (ret_len == -1)
 				return (-1);
