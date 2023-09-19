@@ -14,36 +14,55 @@
 int handle_print(const char *fmt, int *ind, va_list list, char buffer[],
 	int flags, int width, int precision, int size)
 {
-	int i, unknow_len = 0, printed_chars = -1;
-	fmt_t fmt_types[] = {
-		{'c', print_char}, {'s', print_string}, {'%', print_percent},
-		{'i', print_int}, {'d', print_int}, {'b', print_binary},
-		{'u', print_unsigned}, {'o', print_octal}, {'x', print_hexadecimal},
-		{'X', print_hexa_upper}, {'p', print_pointer}, {'S', print_non_printable},
-		{'r', print_reverse}, {'R', print_rot13string}, {'\0', NULL}
-	};
-	for (i = 0; fmt_types[i].fmt != '\0'; i++)
-		if (fmt[*ind] == fmt_types[i].fmt)
-			return (fmt_types[i].fn(list, buffer, flags, width, precision, size));
-
-	if (fmt_types[i].fmt == '\0')
+	int unknow_len = 0, printed_chars = -1;
+	
+	switch (fmt[*ind])
 	{
-		if (fmt[*ind] == '\0')
+		case 'c':
+			return (print_char(list, buffer, flags, width, precision, size));
+		case 's':
+			return (print_string(list, buffer, flags, width, precision, size));
+		case '%':
+			return (print_percent(list, buffer, flags, width, precision, size));
+		case 'i':
+			return (print_int(list, buffer, flags, width, precision, size));
+		case 'd':
+			return (print_int(list, buffer, flags, width, precision, size));
+		case 'b':
+			return (print_binary(list, buffer, flags, width, precision, size));
+		case 'u':
+			return (print_unsigned(list, buffer, flags, width, precision, size));
+		case 'o':
+			return (print_octal(list, buffer, flags, width, precision, size));
+		case 'x':
+			return (print_hexadecimal(list, buffer, flags, width, precision, size));
+		case 'X':
+			return (print_hexa_upper(list, buffer, flags, width, precision, size));
+		case 'p':
+			return (print_pointer(list, buffer, flags, width, precision, size));
+		case 'S':
+			return (print_non_printable(list, buffer, flags, width, precision, size));
+		case 'r':
+			return (print_reverse(list, buffer, flags, width, precision, size));
+		case 'R':
+			return (print_rot13string(list, buffer, flags, width, precision, size));
+		case '\0':
 			return (-1);
-		unknow_len += write(1, "%%", 1);
-		if (fmt[*ind - 1] == ' ')
-			unknow_len += write(1, " ", 1);
-		else if (width)
-		{
-			--(*ind);
-			while (fmt[*ind] != ' ' && fmt[*ind] != '%')
+		default:
+			unknow_len += write(1, "%%", 1);
+			if (fmt[*ind - 1] == ' ')
+				unknow_len += write(1, " ", 1);
+			else if (width)
+			{
 				--(*ind);
-			if (fmt[*ind] == ' ')
-				--(*ind);
-			return (1);
+				while (fmt[*ind] != ' ' && fmt[*ind] != '%')
+					--(*ind);
+				if (fmt[*ind] == ' ')
+					--(*ind);
+				return (1);
+			}
+			unknow_len += write(1, &fmt[*ind], 1);
+			return (unknow_len);
 		}
-		unknow_len += write(1, &fmt[*ind], 1);
-		return (unknow_len);
-	}
 	return (printed_chars);
 }
