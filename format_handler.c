@@ -22,7 +22,7 @@ int format_handler(const char *format, int *i, va_list arg, char buffer[],
 	switch (format[*i])
 	{
 		case 'c':
-			return (handle_write_char(arg, buffer, flags, width));
+			return (write_char(arg, buffer, flags, width));
 		case 's':
 			return (write_string(arg, flags, width, precision));
 		case '%':
@@ -34,7 +34,7 @@ int format_handler(const char *format, int *i, va_list arg, char buffer[],
 		case 'b':
 			return (write_binary(arg));
 		case 'u':
-			return (inc_unsignd(arg, buffer, flags, width, precision, modifier));
+			return (inc_unsign(arg, buffer, flags, width, precision, modifier));
 		case 'o':
 			return (inc_octal(arg, buffer, flags, width, precision, modifier));
 		case 'x':

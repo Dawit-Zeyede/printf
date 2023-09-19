@@ -1,6 +1,6 @@
 #include "main.h"
 /**
-  * handle_write_char - incorporte options with a char.
+  * write_char - incorporte options with a char.
   * @args: character to be position according to its options.
   * @buffer: string to store final result.
   * @flags: counted flags.
@@ -9,8 +9,7 @@
   * @modifier: counted modifiers.
   * Return: the newly appended.
   */
-int handle_write_char(va_list args, char buffer[],
-	int flags, int width)
+int write_char(va_list args, char buffer[], int flags, int width)
 {
 	int i = 0;
 	char chr;

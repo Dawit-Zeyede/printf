@@ -2,7 +2,7 @@
 /**
   * length_modifier - long and short format.
   * @num: numeber to be modified.
-  * @size: prefered format.
+  * @modifier: prefered format.
   * Return: length.
   */
 long int length_modifier(long int num, int modifier)
@@ -19,7 +19,7 @@ long int length_modifier(long int num, int modifier)
   * @modifier: prefferd modifier.
   * Return: length of the full num.
  */
-long int un_length_modifier(unsigned long int num, int size)
+long int un_length_modifier(unsigned long int num, int modifier)
 {
 	if (size == 2)
 		return (num);
