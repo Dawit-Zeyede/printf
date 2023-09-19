@@ -29,7 +29,7 @@ int handle_print(const char *fmt, int *ind, va_list list, char buffer[],
 		case 'd':
 			return (print_int(list, buffer, flags, width, precision, size));
 		case 'b':
-			return (print_binary(list, buffer, flags, width, precision, size));
+			return (print_binary(list));
 		case 'u':
 			return (print_unsignd(list, buffer, flags, width, precision, size));
 		case 'o':
