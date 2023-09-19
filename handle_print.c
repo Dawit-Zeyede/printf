@@ -21,7 +21,7 @@ int handle_print(const char *fmt, int *ind, va_list list, char buffer[],
 		case 'c':
 			return (print_char(list, buffer, flags, width, precision, size));
 		case 's':
-			return (print_string(list, buffer, flags, width, precision, size));
+			return (print_string(list, flags, width, precision));
 		case '%':
 			return (write(1, "%%", 1));
 		case 'i':
