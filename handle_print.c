@@ -20,7 +20,7 @@ int format_handler(const char *format, int *i, va_list arg, char buffer[],
 	switch (format[*i])
 	{
 		case 'c':
-			return (handle_write_char(arg, buffer, flags, width, precision, modifier));
+			return (handle_write_char(arg, buffer, flags, width));
 		case 's':
 			return (print_string(arg, flags, width, precision));
 		case '%':

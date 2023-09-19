@@ -1,7 +1,7 @@
 #include "main.h"
 /**
   * handle_write_char - incorporte options with a char.
-  * @c: character to be position according to its options.
+  * @args: character to be position according to its options.
   * @buffer: string to store final result.
   * @flags: counted flags.
   * @width: counted width.
@@ -10,14 +10,11 @@
   * Return: the newly appended.
   */
 int handle_write_char(va_list args, char buffer[],
-	int flags, int width, int precision, int modifier)
+	int flags, int width)
 {
 	int i = 0;
 	char chr;
 	char space = ' ';
-
-	(void) precision;
-	(void) (modifier);
 
 	chr = va_arg(args, int);
 	if (flags & 4)
