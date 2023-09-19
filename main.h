@@ -20,7 +20,7 @@ int get_width(const char *format, int *i, va_list args);
 int get_precision(const char *format, int *i, va_list args);
 int get_size(const char *format, int *i);
 int write_reverse(va_list args);
-int print_rot13string(va_list args, char buffer[], int flags, int width, int precision, int modifier);
+int write_rot13_encry(va_list args);
 int handle_write_char(va_list args, char buffer[], int flags, int width);
 int write_number(int sign, int i, char buffer[], int flags, int width, int precision, int modifier);
 int write_num(int i, char buffer[], int flags, int width, int precision, int len, char space, char ch);

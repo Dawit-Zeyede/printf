@@ -44,7 +44,7 @@ int format_handler(const char *format, int *i, va_list arg, char buffer[],
 		case 'r':
 			return (write_reverse(arg));
 		case 'R':
-			return (print_rot13string(arg, buffer, flags, width, precision, modifier));
+			return (write_rot13_encry(arg));
 		case '\0':
 			return (-1);
 		default:
