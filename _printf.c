@@ -59,9 +59,7 @@ int _printf(const char *format, ...)
  */
 void print_buffer(char buffer[], int *buff_ind)
 {
-	int i;
-
-	for(i = 0; i <= *buff_ind; i++)
-		write(1, &buffer[i], 1);
+	if (*buff_ind > 0)
+		write(1, &buffer[0], *buff_ind);
 	*buff_ind = 0;
 }
