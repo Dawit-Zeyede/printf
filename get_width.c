@@ -13,7 +13,7 @@ int count_width(const char *format, int *i, va_list arg)
 
 	for (k = *i + 1; format[k] != '\0'; k++)
 	{
-		if (is_digit(format[k]))
+		if (check(format[k]))
 		{
 			width *= 10;
 			width += format[k] - '0';

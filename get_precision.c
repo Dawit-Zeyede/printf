@@ -16,7 +16,7 @@ int count_precision(const char *format, int *i, va_list arg)
 	precision = 0;
 	for (k += 1; format[k] != '\0'; k++)
 	{
-		if (is_digit(format[k]))
+		if (check(format[k]))
 		{
 			precision *= 10;
 			precision += format[k] - '0';

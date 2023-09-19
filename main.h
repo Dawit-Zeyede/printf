@@ -25,7 +25,7 @@ int handle_write_char(va_list args, char buffer[], int flags, int width);
 int write_number(int sign, int i, char buffer[], int flags, int width, int precision, int modifier);
 int write_num(int i, char buffer[], int flags, int width, int precision, int len, char space, char ch);
 int write_unsgnd(int sign, int i, char buffer[], int flags, int width, int precision, int modifier);
-int is_digit(char);
+int check(char);
 long int length_modifier(long int num, int modifier);
 long int un_length_modifier(unsigned long int num, int modifier);
 int _putchar(char c);
