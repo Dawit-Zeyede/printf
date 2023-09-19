@@ -16,9 +16,6 @@ int print_string(va_list types, char buffer[],
 	char *str = va_arg(types, char *);
 
 	UNUSED(buffer);
-	UNUSED(flags);
-	UNUSED(width);
-	UNUSED(precision);
 	UNUSED(size);
 	if (str == NULL)
 	{
